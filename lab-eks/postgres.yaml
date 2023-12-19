@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  namespace: andreas-aman
+  labels:
+    app: postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:14
+        entrypoint: ["/bin/sh", "-c"]
+        command: ["while true; do sleep 30; done;"]
+      serviceAccountName: curity
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: curity
+  namespace: andreas-aman
