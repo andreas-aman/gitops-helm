@@ -18,8 +18,9 @@ spec:
       containers:
       - name: postgres
         image: postgres:14
-        entrypoint: ["/bin/sh", "-c"]
-        command: ["while true; do sleep 30; done;"]
+        env:
+        - name: POSTGRES_PASSWORD
+          value: "supersecret"
       serviceAccountName: curity
 ---
 apiVersion: v1
