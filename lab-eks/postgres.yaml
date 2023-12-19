@@ -21,10 +21,10 @@ spec:
         env:
         - name: POSTGRES_PASSWORD
           value: "supersecret"
-      serviceAccountName: curity
+      serviceAccountName: curity2
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: curity
+  name: curity2
   namespace: andreas-aman
